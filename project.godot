@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Godot Project"
+config/name="TeardownMage"
 run/main_scene="uid://dh1f2rkdbgjgb"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
