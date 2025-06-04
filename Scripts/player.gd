@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var speed : float = 100.0
 @export var jump_velocity : float = -400.0
 
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -29,4 +31,14 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("shoot"):
 		pass
+	
+	if velocity.y < 0:
+		animation_player.play("Jump")
+	elif not is_on_floor():
+		animation_player.play("Fall")
+	elif is_on_floor() and velocity.x:
+		animation_player.play("Walk")
+	else :
+		animation_player.play("Idle")
+
 	move_and_slide()
