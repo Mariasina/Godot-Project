@@ -16,3 +16,5 @@ texture = ExtResource("1_rpqav")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1.75)
 shape = SubResource("RectangleShape2D_kyqiw")
+
+[node name="Marker2D" type="Marker2D" parent="."]
