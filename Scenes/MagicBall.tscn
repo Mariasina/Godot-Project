@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d233betpn4ec2"]
+[gd_scene load_steps=4 format=3 uid="uid://dk4akax5yh32g"]
 
 [ext_resource type="Script" uid="uid://qy5vgouv3fwm" path="res://Scripts/magic_ball.gd" id="1_85487"]
 [ext_resource type="Texture2D" uid="uid://ctprd637l2s5v" path="res://Sprites/Magic ball.png" id="2_6li8a"]

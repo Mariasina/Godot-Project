@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh5mmptf83x0l"
-path="res://.godot/imported/Ground tile.png-e3e56e4a94226bc68144cd106f326c28.ctex"
+uid="uid://c8ybgeat3p7fn"
+path="res://.godot/imported/Tileset_Destroyed.png-fdcf68461dc4f53cac4058fe48d01a57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ground tile.png"
-dest_files=["res://.godot/imported/Ground tile.png-e3e56e4a94226bc68144cd106f326c28.ctex"]
+source_file="res://Sprites/Tileset_Destroyed.png"
+dest_files=["res://.godot/imported/Tileset_Destroyed.png-fdcf68461dc4f53cac4058fe48d01a57.ctex"]
 
 [params]
 
