@@ -35,9 +35,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = true
 	if velocity.x > 0:
 		sprite.flip_h = false
-		
-	if Input.is_action_just_pressed("shoot"):
-		pass
+
 	
 	if velocity.y < 0:
 		animation_player.play("Jump")
@@ -48,12 +46,9 @@ func _physics_process(delta: float) -> void:
 	else :
 		animation_player.play("Idle")
 
-#Código do projétil
-	print(shoot_marker.position)
 	bullet_follow_mouse()
 	fire_bullet()
 	move_and_slide()
-	
 	
 func bullet_follow_mouse():
 	shoot_marker.look_at(get_global_mouse_position())

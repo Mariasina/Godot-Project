@@ -3,17 +3,34 @@ extends Node2D
 const SPEED = 300
 var direction = Vector2.RIGHT
 var tilemap : TileMapLayer
+var collision : CollisionShape2D
+var collided = false
+var cell
+var tile_id
 
 func _ready() -> void:
-	tilemap = get_tree().get_current_scene().find_child("TileMapLayer", true, false)
+	
+	collision = $Area2D/CollisionShape2D
 
 func _physics_process(delta: float) -> void:
-	position += direction.normalized() * SPEED * delta
+	if (!collided):
+		position += direction.normalized() * SPEED * delta
+	if (collided):
+		queue_free()
+	#if (collision != null and !collided):
+		#collided = true 
+		#if (collision.collider.name == "TileMapLayer"):
+			#cell = tilemap.world_to_map(collision.position - collision.normal)
+			#tile_id = tilemap.get_cellv(cell)
+			#if tile_id == 0:
+				#tilemap.erase_cell(cell) 
+				#
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body.name == "TileMapLayer":
-		var cell = tilemap.world_to_map(global_position)
-		var tile_id = tilemap.get_cellv(cell)
-		if tile_id == 0:
-			tilemap.set_cellv(cell, -1) # -1 = apaga o tile
-		queue_free() # destrói a magic ball
+		tilemap = body
+		var tile_coord = tilemap.get_coords_for_body_rid(body_rid)
+		
+		if (tilemap.get_cell_source_id(tile_coord) == 0):
+			collided = true
+			tilemap.erase_cell(tile_coord)
