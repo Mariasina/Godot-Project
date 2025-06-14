@@ -1,6 +1,8 @@
 extends Node2D
+@export var explosion_effect : PackedScene = preload("res://Particles/ProjectileParticle.tscn")
+@onready var animation_Projectile : AnimationPlayer = $AnimationPlayer
 
-const SPEED = 300
+const SPEED = 100
 var direction = Vector2.RIGHT
 var tilemap : TileMapLayer
 var collision : CollisionShape2D
@@ -9,12 +11,12 @@ var cell
 var tile_id
 
 func _ready() -> void:
-	
 	collision = $Area2D/CollisionShape2D
 
 func _physics_process(delta: float) -> void:
 	if (!collided):
 		position += direction.normalized() * SPEED * delta
+		animation_Projectile.play("Projectile_Animation")
 	if (collided):
 		queue_free()
 	#if (collision != null and !collided):
@@ -33,4 +35,11 @@ func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 		
 		if (tilemap.get_cell_source_id(tile_coord) == 0):
 			collided = true
+			spawn_explosion(global_position)
 			tilemap.erase_cell(tile_coord)
+			
+func spawn_explosion(pos: Vector2):
+	if explosion_effect:
+		var explosion_instance = explosion_effect.instantiate()
+		get_tree().get_current_scene().add_child(explosion_instance)
+		explosion_instance.global_position = pos

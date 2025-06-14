@@ -1,7 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk4akax5yh32g"]
+[gd_scene load_steps=7 format=3 uid="uid://dk4akax5yh32g"]
 
 [ext_resource type="Script" uid="uid://qy5vgouv3fwm" path="res://Scripts/magic_ball.gd" id="1_85487"]
-[ext_resource type="Texture2D" uid="uid://ctprd637l2s5v" path="res://Sprites/Magic ball.png" id="2_6li8a"]
+[ext_resource type="Texture2D" uid="uid://recdwbo08a01" path="res://Sprites/Projectile.png" id="2_anqnq"]
+
+[sub_resource type="Animation" id="Animation_8o3m4"]
+resource_name = "Projectile_Animation"
+length = 0.666675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ju7te"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fbf33"]
+_data = {
+&"Projectile_Animation": SubResource("Animation_8o3m4"),
+&"RESET": SubResource("Animation_ju7te")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00gwv"]
 radius = 30.0
@@ -11,7 +50,14 @@ script = ExtResource("1_85487")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_6li8a")
+texture = ExtResource("2_anqnq")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_fbf33")
+}
 
 [node name="Area2D" type="Area2D" parent="."]
 
