@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca3dtbc8r07fo"]
+
+[ext_resource type="Texture2D" uid="uid://62ov1d58v4tw" path="res://Sprites/destructible.png" id="1_pb8lt"]
+
+[node name="Destructibles" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pb8lt")
