@@ -9,9 +9,16 @@ var collision : CollisionShape2D
 var collided = false
 var cell
 var tile_id
+var rand1
+var rand2
+var rand3
 
 func _ready() -> void:
 	collision = $Area2D/CollisionShape2D
+	var rng = RandomNumberGenerator.new()
+	rand1 = rng.randi_range(1, 100)
+	rand2 = rng.randi_range(1, 100)
+	rand3 = rng.randi_range(1, 100)
 
 func _physics_process(delta: float) -> void:
 	if (!collided):
@@ -38,6 +45,9 @@ func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 			var tile_world_pos = tilemap.map_to_local(tile_coord) + tilemap.position
 			spawn_explosion(tile_world_pos)
 			tilemap.erase_cell(tile_coord)
+			
+			if rand1 == 7:
+				print(rand1)
 
 			
 func spawn_explosion(pos: Vector2):
