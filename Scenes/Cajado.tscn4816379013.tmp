@@ -60,4 +60,4 @@ libraries = {
 }
 
 [node name="Marker2D" type="Marker2D" parent="Cajado_Pivot"]
-position = Vector2(19, 0)
+position = Vector2(14, 0)

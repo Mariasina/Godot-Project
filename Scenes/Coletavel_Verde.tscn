@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhc3dvhldsso4"]
+[gd_scene load_steps=8 format=3 uid="uid://bhc3dvhldsso4"]
 
 [ext_resource type="Script" uid="uid://cuqaq8kgg4vwa" path="res://Scripts/coletavel.gd" id="1_23bdp"]
 [ext_resource type="Texture2D" uid="uid://dhea6l6yhggsm" path="res://Sprites/Coletavel_03.png" id="1_p11y7"]
+[ext_resource type="AudioStream" uid="uid://0lwqoap41wce" path="res://Sounds/coin.wav" id="3_uybqa"]
 
 [sub_resource type="Animation" id="Animation_yd8u3"]
 resource_name = "Coletável"
@@ -57,10 +58,15 @@ hframes = 7
 libraries = {
 &"": SubResource("AnimationLibrary_ydfg1")
 }
+autoplay = "Coletável"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_uybqa")
+
+[node name="Pickup_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uybqa")
+volume_db = -16.0
 
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

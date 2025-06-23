@@ -18,7 +18,6 @@ const RED = preload("res://Scenes/Coletavel_Vermelho.tscn")
 
 func _ready() -> void:
 	collision = $Area2D/CollisionShape2D
-	
 
 func _physics_process(delta: float) -> void:
 	if (!collided):
@@ -37,7 +36,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	generate_rands()
-	
 	if body.name == "TileMapLayer" or body.name == "TileMapLayer2":
 		tilemap = body
 		var tile_coord = tilemap.get_coords_for_body_rid(body_rid)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxbmdcu6g6kga"]
+[gd_scene load_steps=5 format=3 uid="uid://cxbmdcu6g6kga"]
 
-[ext_resource type="Script" path="res://Particles/projectile_particle.gd" id="1_5wp4l"]
+[ext_resource type="Script" uid="uid://briykhg044nsw" path="res://Particles/projectile_particle.gd" id="1_5wp4l"]
 [ext_resource type="Texture2D" uid="uid://dvwl63ueg3ufe" path="res://Sprites/particle.png" id="1_436q5"]
+[ext_resource type="AudioStream" uid="uid://cmfakfturjv5m" path="res://Sounds/explosion.wav" id="3_gqu1q"]
 
 [sub_resource type="Curve" id="Curve_5wp4l"]
 _data = [Vector2(0.0170455, 0.179775), 0.0, 0.0, 0, 0, Vector2(0.607955, 0.483146), 0.0, 0.0, 0, 0, Vector2(0.982955, 0), 0.0, 0.0, 0, 0]
@@ -28,5 +29,9 @@ angular_velocity_max = 290.91
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_5wp4l")
+
+[node name="Explosion_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gqu1q")
+volume_db = -50.0
 
 [connection signal="child_entered_tree" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_child_entered_tree"]
