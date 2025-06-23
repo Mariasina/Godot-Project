@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://vjqr078d13v5"]
+[gd_scene load_steps=7 format=3 uid="uid://vjqr078d13v5"]
 
 [ext_resource type="Texture2D" uid="uid://ys6i0q3qnnvk" path="res://Sprites/Coletavel_01.png" id="1_cvrvi"]
+[ext_resource type="Script" uid="uid://cuqaq8kgg4vwa" path="res://Scripts/coletavel.gd" id="1_lai73"]
 
 [sub_resource type="Animation" id="Animation_yd8u3"]
 resource_name = "Coletável"
@@ -41,7 +42,11 @@ _data = {
 &"RESET": SubResource("Animation_8g471")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abfrw"]
+size = Vector2(16, 16)
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_lai73")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -52,3 +57,11 @@ hframes = 7
 libraries = {
 &"": SubResource("AnimationLibrary_ydfg1")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_abfrw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

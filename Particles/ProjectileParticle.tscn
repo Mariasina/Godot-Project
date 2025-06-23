@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxbmdcu6g6kga"]
 
-[ext_resource type="Script" uid="uid://briykhg044nsw" path="res://Particles/projectile_particle.gd" id="1_5wp4l"]
+[ext_resource type="Script" path="res://Particles/projectile_particle.gd" id="1_5wp4l"]
 [ext_resource type="Texture2D" uid="uid://dvwl63ueg3ufe" path="res://Sprites/particle.png" id="1_436q5"]
 
 [sub_resource type="Curve" id="Curve_5wp4l"]
